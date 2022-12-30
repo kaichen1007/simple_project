@@ -10,12 +10,11 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 普通用户购物车操作类
+ * vip用户计算逻辑
  * Author: chenKai
  * Date: 2022/12/30
  */
-public class NormalUserCart {
-
+public class VipUserCart {
     public Cart process(long userId, Map<Long, Integer> items){
         Cart cart = new Cart();
 
@@ -37,8 +36,18 @@ public class NormalUserCart {
             item.setDeliveryPrice(
                     BigDecimal.valueOf(BigDecimalUtil.mul(BigDecimalUtil.mul(item.getPrice().doubleValue(),(double)item.getQuantity()), 0.1))
             );
-            //普通用户无优惠
-            item.setCouponPrice(BigDecimal.ZERO);
+            //购买两件以上相同商品，第三件开始享受一定折扣
+            if (item.getQuantity() > 2){
+                item.setCouponPrice(
+                        item.getPrice().multiply(
+                                BigDecimal.valueOf(
+                                        100 - 30 //模拟用户表优惠金额
+                                ).divide(new BigDecimal("100"))
+                        )
+                );
+            }else {
+                item.setCouponPrice(BigDecimal.ZERO);
+            }
         });
 
         //计算购物车总价格
@@ -55,4 +64,5 @@ public class NormalUserCart {
 
         return cart;
     }
+
 }

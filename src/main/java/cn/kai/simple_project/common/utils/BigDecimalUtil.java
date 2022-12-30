@@ -1,4 +1,4 @@
-package cn.kai.simple_project.utils;
+package cn.kai.simple_project.common.utils;
 
 import java.math.BigDecimal;
 

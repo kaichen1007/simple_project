@@ -1,8 +1,7 @@
-package cn.kai.simple_project.app;
+package cn.kai.simple_project.model;
 
 import cn.kai.simple_project.dto.Cart;
 import cn.kai.simple_project.dto.Item;
-import cn.kai.simple_project.common.utils.BigDecimalUtil;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -10,12 +9,11 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 普通用户购物车操作类
+ * 使用模版设计模式改写
  * Author: chenKai
  * Date: 2022/12/30
  */
-public class NormalUserCart {
-
+public abstract class AbstractCartModel {
     public Cart process(long userId, Map<Long, Integer> items){
         Cart cart = new Cart();
 
@@ -33,12 +31,9 @@ public class NormalUserCart {
 
         //处理运费和商品优惠
         itemList.forEach(item->{
-            //运费是商品总价的10%
-            item.setDeliveryPrice(
-                    BigDecimal.valueOf(BigDecimalUtil.mul(BigDecimalUtil.mul(item.getPrice().doubleValue(),(double)item.getQuantity()), 0.1))
-            );
-            //普通用户无优惠
-            item.setCouponPrice(BigDecimal.ZERO);
+            //丢给子类处理
+            processCouponPrice(userId, item);
+            processDeliveryPrice(userId, item);
         });
 
         //计算购物车总价格
@@ -55,4 +50,18 @@ public class NormalUserCart {
 
         return cart;
     }
+
+    /**
+     * 处理每个商品的优惠金额
+     * @param userId
+     * @param item
+     */
+    protected abstract void processCouponPrice(long userId, Item item);
+
+    /**
+     * 处理每个商品的运费
+     * @param userId
+     * @param item
+     */
+    protected abstract void processDeliveryPrice(long userId, Item item);
 }

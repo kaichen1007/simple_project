@@ -1,6 +1,6 @@
 package cn.kai.simple_project.dto;
 
-import cn.kai.simple_project.utils.BigDecimalUtil;
+import cn.kai.simple_project.common.utils.BigDecimalUtil;
 import lombok.Data;
 
 import java.math.BigDecimal;

@@ -2,7 +2,6 @@ package cn.kai.simple_project.app;
 
 import cn.kai.simple_project.dto.Cart;
 import cn.kai.simple_project.dto.Item;
-import cn.kai.simple_project.common.utils.BigDecimalUtil;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -10,12 +9,11 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 普通用户购物车操作类
+ * 免运费、无折扣的内部用户
  * Author: chenKai
  * Date: 2022/12/30
  */
-public class NormalUserCart {
-
+public class InternalUserCart {
     public Cart process(long userId, Map<Long, Integer> items){
         Cart cart = new Cart();
 
@@ -33,11 +31,7 @@ public class NormalUserCart {
 
         //处理运费和商品优惠
         itemList.forEach(item->{
-            //运费是商品总价的10%
-            item.setDeliveryPrice(
-                    BigDecimal.valueOf(BigDecimalUtil.mul(BigDecimalUtil.mul(item.getPrice().doubleValue(),(double)item.getQuantity()), 0.1))
-            );
-            //普通用户无优惠
+            item.setDeliveryPrice(BigDecimal.ZERO);
             item.setCouponPrice(BigDecimal.ZERO);
         });
 
@@ -55,4 +49,5 @@ public class NormalUserCart {
 
         return cart;
     }
+
 }
