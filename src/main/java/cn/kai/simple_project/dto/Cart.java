@@ -55,4 +55,40 @@ public class Cart {
     }
 
 
+    /**
+     * 计算总运费
+     * @param items
+     * @return
+     */
+    public BigDecimal getCartTotalDeliveryPrice(List<Item> items){
+        return items.stream().map(Item::getDeliveryPrice).reduce(BigDecimal.ZERO,BigDecimal::add);
+    }
+
+    /**
+     * 计算总优惠
+     * @param items
+     * @return
+     */
+    public BigDecimal getCartTotalDiscount(List<Item> items){
+        return items.stream().map(Item::getCouponPrice).reduce(BigDecimal.ZERO,BigDecimal::add);
+    }
+
+    /**
+     * 计算应付总价格
+     * 商品总价+总运费-优惠总价
+     * @return
+     */
+    public BigDecimal getCartPayPrice(List<Item> items){
+        BigDecimal carTotalItemPrice = getCarTotalItemPrice(items);
+        BigDecimal cartTotalDeliveryPrice = getCartTotalDeliveryPrice(items);
+        BigDecimal cartTotalDiscount = getCartTotalDiscount(items);
+
+        return BigDecimal.valueOf(
+                BigDecimalUtil.sub(
+                        BigDecimalUtil.add(carTotalItemPrice.doubleValue(),cartTotalDeliveryPrice.doubleValue())
+                        ,cartTotalDiscount.doubleValue()
+                )
+        );
+    }
+
 }

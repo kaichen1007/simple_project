@@ -44,6 +44,15 @@ public class NormalUserCart {
         //计算购物车总价格
         cart.setTotalItemPrice(cart.getCarTotalItemPrice(itemList));
 
-        return null;
+        //计算总运费
+        cart.setTotalDeliveryPrice(cart.getCartTotalDeliveryPrice(itemList));
+
+        //计算总优惠
+        cart.setTotalDiscount(cart.getCartTotalDiscount(itemList));
+
+        //计算应付价格 商品总价+总运费-优惠总价
+        cart.setPayPrice(cart.getCartPayPrice(itemList));
+
+        return cart;
     }
 }
