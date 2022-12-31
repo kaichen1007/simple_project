@@ -1,5 +1,7 @@
 package cn.kai.simple_project.common.domain;
 
+import cn.kai.simple_project.app.bank.CreateUserApi;
+import cn.kai.simple_project.app.bank.PayApi;
 import lombok.Data;
 
 /**
@@ -13,4 +15,8 @@ public class CommonRequestDomain {
     private long id;
 
     private String type;
+
+    private CreateUserApi createUserApi;
+
+    private PayApi payApi;
 }
