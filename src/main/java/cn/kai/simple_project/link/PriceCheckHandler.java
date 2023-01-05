@@ -19,6 +19,11 @@ public class PriceCheckHandler extends AbstractCheckHandler{
     public JsonData handler(ProductVO product) {
         log.info("价格校验 Handler开始======");
 
+        //降级：如果配置了降级，则跳过此处理器，执行下一个处理器
+        if (super.config.getDown()){
+            log.info("价格校验 Handler已降级，跳过空值校验，执行下一个处理器");
+            return super.next(product);
+        }
         //非法参数校验
         boolean flag = product.getPrice().compareTo(BigDecimal.ZERO) <= 0;
         if (flag){

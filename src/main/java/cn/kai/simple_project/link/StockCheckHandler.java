@@ -17,10 +17,15 @@ public class StockCheckHandler extends AbstractCheckHandler{
     public JsonData handler(ProductVO product) {
         log.info("库存校验 Handler开始======");
 
+        //降级：如果配置了降级，则跳过此处理器，执行下一个处理器
+        if (super.config.getDown()){
+            log.info("库存校验 Handler已降级，跳过空值校验，执行下一个处理器");
+            return super.next(product);
+        }
+
         if (product.getStock() < 0){
             return JsonData.buildError("库存不可小于0!");
         }
-
 
 
         log.info("库存校验结束 通过======");

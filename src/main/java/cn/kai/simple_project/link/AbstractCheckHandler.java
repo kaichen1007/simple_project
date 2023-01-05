@@ -46,7 +46,7 @@ public abstract class AbstractCheckHandler {
     protected JsonData next(ProductVO product){
         //下一个链路没有处理器，直接返回
         if (Objects.isNull(nextHandler)){
-            JsonData.buildSuccess();
+            return JsonData.buildSuccess();
         }
         //执行下一个处理器
         return nextHandler.handler(product);
