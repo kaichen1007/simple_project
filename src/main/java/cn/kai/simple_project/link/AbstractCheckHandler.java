@@ -29,7 +29,7 @@ public abstract class AbstractCheckHandler {
      */
     @Getter
     @Setter
-    protected ProductCheckHandlerConfig config;
+    protected CheckHandlerConfig config;
 
     /**
      * 处理器执行方法

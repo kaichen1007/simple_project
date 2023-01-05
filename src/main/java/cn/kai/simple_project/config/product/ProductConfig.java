@@ -2,7 +2,7 @@ package cn.kai.simple_project.config.product;
 
 import cn.kai.simple_project.common.utils.StringUtils;
 import cn.kai.simple_project.link.AbstractCheckHandler;
-import cn.kai.simple_project.link.ProductCheckHandlerConfig;
+import cn.kai.simple_project.link.CheckHandlerConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -27,18 +27,18 @@ public class ProductConfig {
      * 可在配置文件中配置
      * @return
      */
-    public ProductCheckHandlerConfig getProductHandlerConfig(){
-        return ProductCheckHandlerConfig.builder()
+    public CheckHandlerConfig getProductHandlerConfig(){
+        return CheckHandlerConfig.builder()
                 .handler("nullValueCheckHandler")
                 .down(Boolean.FALSE)
                 .next(
-                        ProductCheckHandlerConfig.builder()
+                        CheckHandlerConfig.builder()
                         .handler("priceCheckHandler")
                         .down(Boolean.FALSE)
                         .next(
-                                ProductCheckHandlerConfig.builder()
+                                CheckHandlerConfig.builder()
                                 .handler("stockCheckHandler")
-                                .down(Boolean.TRUE)
+                                .down(Boolean.FALSE)
                                 .build()
                         ).build()
                 ).build();
@@ -49,7 +49,7 @@ public class ProductConfig {
      * @param config
      * @return
      */
-    public AbstractCheckHandler getHandler(ProductCheckHandlerConfig config){
+    public AbstractCheckHandler getHandler(CheckHandlerConfig config){
         if (Objects.isNull(config)){
             log.error("获取处理器为空========");
             return null;

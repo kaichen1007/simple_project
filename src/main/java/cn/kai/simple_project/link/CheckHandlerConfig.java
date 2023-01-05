@@ -1,6 +1,5 @@
 package cn.kai.simple_project.link;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
@@ -11,7 +10,7 @@ import lombok.Data;
  */
 @Data
 @Builder
-public class ProductCheckHandlerConfig {
+public class CheckHandlerConfig {
     /**
      * 处理器Bean名称
      */
@@ -19,7 +18,7 @@ public class ProductCheckHandlerConfig {
     /**
      * 下一个处理器
      */
-    private ProductCheckHandlerConfig next;
+    private CheckHandlerConfig next;
     /**
      * 是否降级
      */
