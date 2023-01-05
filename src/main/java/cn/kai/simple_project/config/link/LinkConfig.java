@@ -1,4 +1,4 @@
-package cn.kai.simple_project.config.product;
+package cn.kai.simple_project.config.link;
 
 import cn.kai.simple_project.common.utils.StringUtils;
 import cn.kai.simple_project.link.AbstractCheckHandler;
@@ -11,13 +11,13 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * 产品配置
+ * 责任链配置
  * Author: chenKai
  * Date: 2023/1/5
  */
 @Component
 @Slf4j
-public class ProductConfig {
+public class LinkConfig {
 
     @Resource
     private Map<String, AbstractCheckHandler> handlerMap;

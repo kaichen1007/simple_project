@@ -1,7 +1,7 @@
 package cn.kai.simple_project.service.impl;
 
 import cn.kai.simple_project.common.domain.JsonData;
-import cn.kai.simple_project.config.product.ProductConfig;
+import cn.kai.simple_project.config.link.LinkConfig;
 import cn.kai.simple_project.link.AbstractCheckHandler;
 import cn.kai.simple_project.link.HandlerClient;
 import cn.kai.simple_project.link.CheckHandlerConfig;
@@ -21,7 +21,7 @@ import javax.annotation.Resource;
 public class ProductServiceImpl implements ProductService {
 
     @Resource
-    private ProductConfig productConfig;
+    private LinkConfig linkConfig;
 
     @Resource
     private HandlerClient handlerClient;
@@ -29,8 +29,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public JsonData createProduct(ProductVO product) {
-        CheckHandlerConfig productHandlerConfig = productConfig.getProductHandlerConfig();
-        AbstractCheckHandler handler = productConfig.getHandler(productConfig.getProductHandlerConfig());
+        CheckHandlerConfig productHandlerConfig = linkConfig.getProductHandlerConfig();
+        AbstractCheckHandler handler = linkConfig.getHandler(linkConfig.getProductHandlerConfig());
         return handlerClient.executeChain(handler,product);
 
     }
