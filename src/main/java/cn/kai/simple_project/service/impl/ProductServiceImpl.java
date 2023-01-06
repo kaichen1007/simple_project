@@ -2,9 +2,9 @@ package cn.kai.simple_project.service.impl;
 
 import cn.kai.simple_project.common.domain.JsonData;
 import cn.kai.simple_project.config.link.LinkConfig;
-import cn.kai.simple_project.link.AbstractCheckHandler;
+import cn.kai.simple_project.link.productLink.AbstractCheckHandler;
 import cn.kai.simple_project.link.HandlerClient;
-import cn.kai.simple_project.link.CheckHandlerConfig;
+import cn.kai.simple_project.link.productLink.CheckHandlerConfig;
 import cn.kai.simple_project.service.ProductService;
 import cn.kai.simple_project.vo.ProductVO;
 import lombok.extern.slf4j.Slf4j;

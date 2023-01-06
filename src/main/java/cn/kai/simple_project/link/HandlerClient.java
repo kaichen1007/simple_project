@@ -1,9 +1,11 @@
 package cn.kai.simple_project.link;
 
 import cn.kai.simple_project.common.domain.JsonData;
+import cn.kai.simple_project.link.flowLink.AbstractFlowHandler;
+import cn.kai.simple_project.link.productLink.AbstractCheckHandler;
+import cn.kai.simple_project.vo.ApplyUserVO;
 import cn.kai.simple_project.vo.ProductVO;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 /**
@@ -30,5 +32,23 @@ public class HandlerClient {
         }
         return JsonData.buildSuccess();
     }
+
+
+    /**
+     * 审批流程处理器
+     * @param handler
+     * @param applyUser
+     * @return
+     */
+    public JsonData executeFlowChain(AbstractFlowHandler handler, ApplyUserVO applyUser){
+        JsonData handlerResult = handler.handler(applyUser, handler.getConfig());
+
+        if (handlerResult.getCode() == -1){
+            log.error("HandlerClient 审批责任链执行失败返回:{}",handlerResult.getMsg());
+            return handlerResult;
+        }
+        return JsonData.buildSuccess();
+    }
+
 
 }

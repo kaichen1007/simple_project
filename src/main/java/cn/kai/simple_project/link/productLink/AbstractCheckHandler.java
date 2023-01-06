@@ -1,4 +1,4 @@
-package cn.kai.simple_project.link;
+package cn.kai.simple_project.link.productLink;
 
 import cn.kai.simple_project.common.domain.JsonData;
 import cn.kai.simple_project.vo.ProductVO;

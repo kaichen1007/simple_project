@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>cn.kai.simple_project.link.productLink.StockCheckHandler</OriginalElement>
+  <nodes>
+    <node x="537.0" y="83.0">cn.kai.simple_project.link.productLink.PriceCheckHandler</node>
+    <node x="0.0" y="83.0">cn.kai.simple_project.link.productLink.NullValueCheckHandler</node>
+    <node x="284.0" y="83.0">cn.kai.simple_project.link.productLink.StockCheckHandler</node>
+    <node x="285.0" y="161.0">cn.kai.simple_project.link.HandlerClient</node>
+    <node x="510.0" y="161.0">cn.kai.simple_project.config.link.LinkConfig</node>
+    <node x="0.0" y="161.0">cn.kai.simple_project.link.CheckHandlerConfig</node>
+    <node x="272.0" y="0.0">cn.kai.simple_project.link.AbstractCheckHandler</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="cn.kai.simple_project.link.productLink.StockCheckHandler" target="cn.kai.simple_project.link.AbstractCheckHandler" relationship="GENERALIZATION">
+      <point x="0.0" y="-16.5" />
+      <point x="0.0" y="16.5" />
+    </edge>
+    <edge source="cn.kai.simple_project.link.productLink.PriceCheckHandler" target="cn.kai.simple_project.link.AbstractCheckHandler" relationship="GENERALIZATION">
+      <point x="0.0" y="-16.5" />
+      <point x="650.5" y="58.0" />
+      <point x="400.5" y="58.0" />
+      <point x="0.0" y="16.5" />
+    </edge>
+    <edge source="cn.kai.simple_project.link.productLink.NullValueCheckHandler" target="cn.kai.simple_project.link.AbstractCheckHandler" relationship="GENERALIZATION">
+      <point x="0.0" y="-16.5" />
+      <point x="132.0" y="58.0" />
+      <point x="400.5" y="58.0" />
+      <point x="0.0" y="16.5" />
+    </edge>
+  </edges>
+  <settings layout="分层" zoom="1.0" showDependencies="false" x="203.5" y="100.5" />
+  <SelectedNodes>
+    <node>cn.kai.simple_project.link.productLink.NullValueCheckHandler</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

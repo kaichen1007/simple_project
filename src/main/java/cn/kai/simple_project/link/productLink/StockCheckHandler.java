@@ -1,7 +1,6 @@
 package cn.kai.simple_project.link.productLink;
 
 import cn.kai.simple_project.common.domain.JsonData;
-import cn.kai.simple_project.link.AbstractCheckHandler;
 import cn.kai.simple_project.vo.ProductVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,4 @@
-package cn.kai.simple_project.link;
+package cn.kai.simple_project.link.productLink;
 
 import lombok.Builder;
 import lombok.Data;
