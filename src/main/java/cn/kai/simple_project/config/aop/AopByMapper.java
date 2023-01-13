@@ -24,8 +24,8 @@ import java.util.*;
 @Component
 public class AopByMapper {
 
-    private static final String SAVE_MAPPER = "execution(* com.fide.*.mapper..*.insert*(..)) || execution(* com.*.*..service.*.saveBatch(..)) || execution(* com.fide.*.mapper..*.insertBatch(..))";
-    private static final String UPDATE_MAPPER = "execution(* com.fide.*.mapper..*.update(..)) || execution(* com.fide.*.mapper..*.updateById(..)) || execution(* com.fide.*.mapper..*.updateBatchById(..)) || execution(* com.fide.*.mapper..*.saveOrUpdateBatch(..))";
+    private static final String SAVE_MAPPER = "execution(* cn.kai.*.mapper..*.insert*(..)) || execution(* cn.*.*..service.*.saveBatch(..)) || execution(* cn.kai.*.mapper..*.insertBatch(..))";
+    private static final String UPDATE_MAPPER = "execution(* cn.kai.*.mapper..*.update(..)) || execution(* cn.kai.*.mapper..*.updateById(..)) || execution(* cn.kai.*.mapper..*.updateBatchById(..)) || execution(* cn.kai.*.mapper..*.saveOrUpdateBatch(..))";
 
     @Around("("+ SAVE_MAPPER +")")
     public Object setInsert(ProceedingJoinPoint joinPoint) throws Throwable {
@@ -52,7 +52,7 @@ public class AopByMapper {
         //转为迭代器
         Iterator<Object> iterator = domainList.iterator();
         while (iterator.hasNext()){
-            Object obj = iterator.hasNext();
+            Object obj = iterator.next();
             Class<?> aClass = obj.getClass();
             if (StringUtils.isEmptyAll(JSON.parseObject(JSON.toJSONString(obj)).getString("uuid"))){
                 //判断uuid是否存在 如不存在则插入
@@ -64,6 +64,8 @@ public class AopByMapper {
             aClass.getMethod("setUpdateTime",Date.class).invoke(obj,now);
             //插入逻辑删除
             aClass.getMethod("setDelFlag",Integer.class).invoke(obj,0);
+            //主键id设为空
+            aClass.getMethod("setId",Integer.class).invoke(obj, (Object) null);
         }
         //回转到参数
         joinPoint.getArgs()[0] = domainList;
@@ -88,7 +90,7 @@ public class AopByMapper {
         Iterator<Object> iterator = domainList.iterator();
 
         while (iterator.hasNext()){
-            Object obj = iterator.hasNext();
+            Object obj = iterator.next();
             Class<?> aClass = obj.getClass();
 
             //修改更新时间
