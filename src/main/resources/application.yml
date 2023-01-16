@@ -9,12 +9,21 @@ spring:
   servlet:
     multipart:
       max-file-size: 10MB
+
+  #引入clickhouse
   #环境 dev(开发环境)、test(测试环境)、prod(生产环境)
   datasource:
-    url: jdbc:mysql://localhost:3306/simple_project?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2b8
-    username: root
-    password: 12345678
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    dynamic:
+      primary: master
+      datasource:
+        master:
+          url: jdbc:mysql://localhost:3306/simple_project?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2b8
+          username: root
+          password: 12345678
+          driver-class-name: com.mysql.cj.jdbc.Driver
+        slave:
+          url: jdbc:clickhouse://127.0.0.1:8123/default
+          driver-class-name: ru.yandex.clickhouse.ClickHouseDriver
 # mybatis-plus相关配置
 mybatis-plus:
   # 以下配置均有默认值,可以不设置

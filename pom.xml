@@ -86,6 +86,14 @@
             <version>3.4.3.4</version>
         </dependency>
 
+<!--        多数据源配置-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+            <version>3.5.2</version>
+        </dependency>
+
+
         <!--mybatis-plus-generator 生成器-->
         <dependency>
             <groupId>com.baomidou</groupId>
@@ -104,6 +112,13 @@
             <groupId>eu.bitwalker</groupId>
             <artifactId>UserAgentUtils</artifactId>
             <version>1.21</version>
+        </dependency>
+
+<!--        clickhouse 引入-->
+        <dependency>
+            <groupId>ru.yandex.clickhouse</groupId>
+            <artifactId>clickhouse-jdbc</artifactId>
+            <version>0.1.55</version>
         </dependency>
 
     </dependencies>
