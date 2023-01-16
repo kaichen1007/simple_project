@@ -107,6 +107,12 @@ public class AopByLog {
         return doInputLog(joinPoint,CONTROLLER_PREFIX);
     }
 
+//    @Around("servicePointcut()")
+//    public Object serviceLog(ProceedingJoinPoint joinPoint) throws Throwable {
+//        return doInputLog(joinPoint,SERVICE_PREFIX);
+//    }
+
+
     private Object doInputLog(ProceedingJoinPoint joinPoint, String prefix) throws Throwable {
 
         Date now = new Date();
@@ -170,16 +176,16 @@ public class AopByLog {
         log.info(title + MARK_INPUT +"{{}}",requestParam);
 
         //可把日志信息记录进 mongodb 或者 clickHouse
-        SysLog sysLog = new SysLog();
-        sysLog.setClientType(operateClientType);
-        sysLog.setClientIp(clientIp);
-        sysLog.setCreateTime(now);
-        sysLog.setOperateBrowser(operateBrowser);
-        sysLog.setOperateOs(operateOs);
-        sysLog.setRequestUrl(requestUrl);
-        sysLog.setTargetClass(targetClass);
-        sysLog.setTargetMethod(targetMethod);
-        sysLogMapper.saveLog(sysLog);
+//        SysLog sysLog = new SysLog();
+//        sysLog.setClientType(operateClientType);
+//        sysLog.setClientIp(clientIp);
+//        sysLog.setCreateTime(now);
+//        sysLog.setOperateBrowser(operateBrowser);
+//        sysLog.setOperateOs(operateOs);
+//        sysLog.setRequestUrl(requestUrl);
+//        sysLog.setTargetClass(targetClass);
+//        sysLog.setTargetMethod(targetMethod);
+//        sysLogMapper.saveLog(sysLog);
 
         //获取返回数据
         try {
