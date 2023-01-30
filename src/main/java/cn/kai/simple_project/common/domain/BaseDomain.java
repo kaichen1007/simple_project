@@ -23,11 +23,9 @@ public class BaseDomain {
     private String uuid;
 
     @TableField("create_time")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date createTime;
 
     @TableField("update_time")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date updateTime;
 
     @TableField("del_flag")

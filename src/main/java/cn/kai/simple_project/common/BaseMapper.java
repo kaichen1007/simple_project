@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.aspectj.weaver.Iterators;
 
@@ -20,12 +21,14 @@ import java.util.function.Consumer;
  * Author: chenKai
  * Date: 2023/1/13
  */
+@Mapper
 public interface BaseMapper<T extends  BaseDomain> extends com.baomidou.mybatisplus.core.mapper.BaseMapper<T> {
 
-    default T selectByUuid(String uuid){
+    default T selectByUuid(T t){
         return selectOne(new QueryWrapper<T>()
                 .lambda()
-                .eq(BaseDomain::getUuid,uuid)
+                .setEntityClass((Class<T>) t.getClass())
+                .eq(BaseDomain::getUuid,t.getUuid())
                 .eq(BaseDomain::getDelFlag,GlobalConstant.DEL_FLAG));
     }
 
@@ -35,13 +38,14 @@ public interface BaseMapper<T extends  BaseDomain> extends com.baomidou.mybatisp
      * @param modify
      * @return
      */
-    default T updateByUuid(String uuid, Consumer<T> modify){
-        // updateByUuid(uuid,domain->domain.setName(name))
-        T t = selectByUuid(uuid);
-        modify.accept(t);
-        updateById(t);
-        return t;
-    }
+//    default T updateByUuid(String uuid, Consumer<T> modify){
+//        // updateByUuid(uuid,domain->domain.setName(name))
+//
+//        T t = selectByUuid(uuid);
+//        modify.accept(t);
+//        updateById(t);
+//        return t;
+//    }
 
     /**
      * 传入对象，修改

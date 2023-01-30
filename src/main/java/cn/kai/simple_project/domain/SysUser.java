@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SysUser extends BaseDomain implements Serializable{
+public class SysUser extends BaseDomain{
 
     /**
      * 名称

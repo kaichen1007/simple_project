@@ -13,7 +13,7 @@
             <result property="createUser" column="create_user" jdbcType="VARCHAR"/>
             <result property="createTime" column="create_time" jdbcType="DATE"/>
             <result property="updateTime" column="update_time" jdbcType="DATE"/>
-            <result property="updateuser" column="updateUser" jdbcType="VARCHAR"/>
+            <result property="updateUser" column="update_user" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
