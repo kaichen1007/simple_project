@@ -4,6 +4,7 @@ import cn.kai.simple_project.common.BaseDomainMapper;
 import cn.kai.simple_project.common.BaseMapper;
 import cn.kai.simple_project.domain.SysUser;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
 
 /**
 * @author chenkai

@@ -42,8 +42,8 @@ import java.util.stream.Stream;
  * Date: 2023/1/14
  */
 @Slf4j
-@Aspect
-@Component
+//@Aspect
+//@Component
 public class AopByLog {
 
     /**

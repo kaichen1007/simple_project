@@ -20,8 +20,8 @@ import java.util.*;
  */
 
 @Slf4j
-@Aspect
-@Component
+//@Aspect
+//@Component
 public class AopByMapper {
 
     private static final String SAVE_MAPPER = "execution(* cn.kai.*.mapper..*.insert*(..)) || execution(* cn.*.*..service.*.saveBatch(..)) || execution(* cn.kai.*.mapper..*.insertBatch(..))";
