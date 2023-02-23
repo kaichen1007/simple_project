@@ -129,12 +129,11 @@ public class AopByAnno {
 
         try {
             Object proceed = joinPoint.proceed();
-            log.info("出参[:{}:{}]",returnType,inoutJson.writeValueAsString(proceed));
-
             String format1 = sf.format(new Date());
             long end = System.currentTimeMillis();
             log.info("结束时间:{}",format1);
             log.info("用时:{}",(end - begin) /1000);
+            log.info("出参[:{}:{}]",returnType,inoutJson.writeValueAsString(proceed));
             return proceed;
         }catch (Throwable e){
             log.error("异常:{}",e.toString());

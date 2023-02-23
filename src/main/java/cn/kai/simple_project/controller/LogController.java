@@ -24,6 +24,7 @@ public class LogController {
     @PostMapping("/getLog")
     @LogApi(methodDesc = "获取日志",type = LogEnum.SELECT)
     public JsonData getLog(@RequestBody Shop shop){
+        Integer a =  shop.getShopId() / 0;
         return JsonData.buildSuccess(shop);
     }
 
